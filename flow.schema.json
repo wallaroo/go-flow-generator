@@ -1,0 +1,97 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "version": {
+            "type": "string",
+            "default": "0.1.0"
+        },
+        "headers": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Record"
+            }
+        },
+        "trailers": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Record"
+            }
+        },
+        "content": {
+            "$ref": "#/definitions/Record"
+        }
+    },
+    "required": [
+        "name"
+    ],
+    "definitions": {
+        "Record": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RecordField"
+                    }
+                }
+            },
+            "required": [
+                "name"
+            ]
+        },
+        "RecordField": {
+            "type": "object",
+            "required": [
+                "name",
+                "type",
+                "start",
+                "end"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "start": {
+                    "type": "integer"
+                },
+                "end": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "string",
+                        "number",
+                        "date"
+                    ]
+                },
+                "format": {
+                    "type": "string"
+                },
+                "const": {
+                    "type": [
+                        "string",
+                        "number"
+                    ]
+                },
+                "enum": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "fill": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,361 @@
+name: "NEXI International Debit"
+version: "0.1.0"
+headers:
+  - name: "HEADER"
+    fields:
+      - name: "TIPO RECORD"
+        start: 0
+        end: 8
+        type: string
+        const: "HEADER  "
+      - name: "IDENTIFICATIVO FILE"
+        start: 8
+        end: 11
+        type: string
+        const: DTG
+      - name: ABI DESTINATARIO
+        start: 11
+        end: 16
+        type: string
+      - name: DATA ORA FILE
+        start: 16
+        end: 30
+        type: date
+        format: YYYYMMDDHHmmss
+      - name: CODICE FILE
+        start: 30
+        end: 33
+        type: number
+        enum: ["681", "680"]
+      - name: PROGRESSIVO FILE
+        start: 33
+        end: 42
+        type: number
+      - name: FILLER
+        start: 42
+        end: 750
+        type: string
+        fill: " "
+content:
+  name: DETTAGLIO
+  fields:
+    - name: "CODICE COMPANY"
+      start: 0
+      end: 5
+      type: number
+      const: 10500
+    - name: "OWNER LEVEL 1"
+      type: "string"
+      start: 5
+      end: 10
+    - name: "OWNER LEVEL 2"
+      type: "string"
+      start: 10
+      end: 15
+      const: 00050
+    - name: "OWNER LEVEL 3"
+      type: string
+      start: 15
+      end: 20
+      const: "     "
+    - name: "CODICE POSIZIONE"
+      type: "string"
+      start: 20
+      end: 27
+    - name: "CODICE ACCOUNT"
+      start: 27
+      end: 50
+      type: string
+    - name: "NUMERO PLASTICA (PAN"
+      start: 50
+      end: 73
+      type: "string"
+    - name: INTERNAL ACCOUNT CODE
+      start: 73
+      end: 86
+      type: string
+    - name: DATA INIZIO CICLO
+      start: 86
+      end: 94
+      type: number
+    - name: DATA EFFETTIVA TRANSAZIONE
+      start: 94
+      end: 102
+      type: date
+      format: "YYYYMMDD"
+    - name: PROGRESSIVO TRANSAZIONE
+      start: 102
+      end: 111
+      type: number
+    - name: PROGRESSIVO INTERNO TRANSAZIONE
+      start: 111
+      end: 120
+      type: number
+    - name: IMPORTO TRANSAZIONE ORIGINARIA
+      start: 120
+      end: 135
+      type: number
+      format: "13,2"
+    - name: CURRENCY CODE 
+      start: 135
+      end: 138
+      type: string
+    - name: IMPORTO
+      start: 138
+      end: 153
+      type: number
+      format: "13,2"
+    - name: CODICE DI TRANSAZIONE
+      start: 153
+      end: 158
+      type: string
+    - name: SEGNO
+      start: 158
+      end: 160
+      type: string
+      enum: ["CR", "DR"]
+    - name: DATA POSTING
+      start: 160
+      end: 168
+      type: number
+    - name: DATA TRANSAZIONE
+      start: 168
+      end: 176
+      type: date
+      format: YYYYMMDD
+    - name: TIMESTAMP ELABORAZIONE
+      start: 176
+      end: 202
+      type: date
+      format: YYYY-MM-DD-HH.mm.ss.999999
+    - name: IDENTIFICATIVO TRANSAZIONE
+      start: 202
+      end: 225
+      type: string
+    - name: MERCHANT CATEGORY CODE
+      start: 225
+      end: 229
+      type: number
+    - name: DESCRIZIONE – INFO ESERCENTE
+      start: 229
+      end: 269
+      type: string
+    - name: STATO ESERCENTE (STATE CODE)
+      start: 269
+      end: 272
+      type: string
+    - name: NAZIONE ESERCENTE (COUNTRY CODE)
+      start: 272
+      end: 275
+      type: string
+    - name: CODICE POSTALE (ZIP CODE) 
+      start: 275
+      end: 285
+      type: string
+    - name: CODICE OPERATORE
+      start: 285
+      end: 295
+      type: string
+    - name: CODICE TERMINALE
+      start: 295
+      end: 303
+      type: string
+    - name: POS ENTRY MODE
+      start: 303
+      end: 305
+      type: string
+    - name: CODICE ESERCENTE
+      start: 305
+      end: 320
+      type: string
+    - name: ADJUSTEMENT REASON CODE
+      start: 320
+      end: 323
+      type: string
+    - name: BIN/ICA
+      start: 323
+      end: 329
+      type: string
+    - name: TRANSACTION MODE 
+      start: 329
+      end: 330
+      type: string
+    - name: TRANSACTION SOURCE CODE 
+      start: 330
+      end: 333
+      type: string
+    - name: CODICE CATEGORIA TRANSAZIONE
+      start: 333
+      end: 336
+      type: string
+    - name: TRANSACTION LEVEL 3
+      start: 336
+      end: 339
+      type: string
+    - name: TRANSACTION LEVEL 4
+      start: 339
+      end: 342
+      type: string
+    - name: TRANSACTION LEVEL 5
+      start: 342
+      end: 345
+      type: string
+    - name: INDICATORE ON-US, ONWE, BILATERAL
+      start: 345
+      end: 347
+      type: string
+      enum: ["00","10","20"]
+    - name: INDICATORE MICROCHIP
+      start: 347
+      end: 348
+      type: string
+    - name: FILLER
+      start: 348
+      end: 370
+      type: string
+      fill: " "
+    - name: CAMBIO APPLICATO DAL NETWORK 
+      start: 370
+      end: 385
+      type: string
+    - name: IMPORTO UPLIFT
+      start: 385
+      end: 400
+      type: string
+    - name: FILLER
+      start: 400
+      end: 415
+      type: string
+      fill: " "
+    - name: ACCOUNT TYPE CODE 
+      start: 415
+      end: 418
+      type: string
+    - name: INDICATORE TIPOLOGIA CONTO
+      start: 418
+      end: 419
+      type: string 
+    - name: DATA ULTIMO ESTRATTO CONTO
+      start: 419
+      end: 427
+      type: number
+    - name: GIORNO DI CICLO 
+      start: 427
+      end: 430
+      type: number
+    - name: DATA PROSSIMO CICLO 
+      start: 430
+      end: 438
+      type: number
+    - name: CODICE FILIALE 
+      start: 438
+      end: 442
+      type: number
+    - name: SECURE LEVEL PROTOCOL 
+      start: 442
+      end: 443
+      type: string
+    - name: SECURE CRD HLD AUTH 
+      start: 443
+      end: 444
+      type: string
+    - name: UCAF LEVEL INDICATOR 
+      start: 444
+      end: 445
+      type: string
+    - name: DATA SCADENZA CARTA 
+      start: 445
+      end: 449
+      type: date
+      format: YYMM
+    - name: ORA TRANSAZIONE 
+      start: 449
+      end: 455
+      type: number
+    - name: CODICE AUTORIZZAZIONE 
+      start: 455
+      end: 461
+      type: string
+    - name: TRANSACTION LIFE CYCLE ID
+      start: 461
+      end: 476
+      type: string
+    - name: SENDER NAME 
+      start: 476
+      end: 506
+      type: string
+    - name: SENDER ADDRESS 
+      start: 506
+      end: 541
+      type: string
+    - name: SENDER CITY 
+      start: 541
+      end: 566
+      type: string
+    - name: SENDER STATE/PROVINCE CD 
+      start: 566
+      end: 569
+      type: string
+    - name: SENDER COUNTRY 
+      start: 569
+      end: 572
+      type: string
+    - name: MULTIPLE CLEARING SEQ NBR
+      start: 572
+      end: 574
+      type: number
+    - name: MULTIPLE CLEARING SEQ COUNT 
+      start: 574
+      end: 576
+      type: number
+    - name: TIPO TRANSAZIONE 
+      start: 576
+      end: 579
+      type: string
+    - name: REASON CODE 
+      start: 579
+      end: 583
+      type: string
+    - name: IBAN TITOLARE 
+      start: 583
+      end: 610
+      type: string
+    - name: ORIGINATOR INSTITUTION IDENTIFICATION CODE
+      start: 610
+      end: 621
+      type: string
+    - name: FAST FUNDS INDICATOR 
+      start: 621
+      end: 622
+      type: string
+    - name: BUSINESS APPLICATION IDENTIFIER
+      start: 622
+      end: 624
+      type: string
+    - name: PROGRAM REGISTRATION ID
+      start: 624
+      end: 627
+      type: string
+    - name: FILLER 
+      start: 627
+      end: 750
+      type: string
+      fill: " "
+
+trailers:
+  - name: TRAILER
+    fields:
+      - name: "TIPO RECORD"
+        start: 0
+        end: 8
+        type: string
+        const: "TRAILER "
+      - name: "CONTATORE RECORD"
+        start: 8
+        end: 17
+        type: number
+      - name: "FILLER"
+        start: 17
+        end: 750
+        type: string
+        fill: " "
